@@ -6,3 +6,6 @@ def test_output():
 def test_logic():
     hello = "hello, world"
     assert hello.upper() == "HELLO, WORLD"
+
+def test_failure():
+    assert 1 + 1 == 3
