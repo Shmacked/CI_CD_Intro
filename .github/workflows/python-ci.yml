@@ -1,10 +1,15 @@
 name: Python CI with UV
 
-on: [push, pull_request]
+on: [push, pull_request, workflow_dispatch]
 
 jobs:
   test:
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        # This will spin up 3 separate virtual machines at the same time!
+        python-version: ["3.12", "3.13"]
 
     steps:
       - name: Checkout code
@@ -16,7 +21,7 @@ jobs:
           enable-cache: true # Speeds up future runs!
 
       - name: Set up Python
-        run: uv python install
+        run: uv python install --python ${{ matrix.python-version }}
 
       - name: Install dependencies
         run: uv sync # This looks at your pyproject.toml
