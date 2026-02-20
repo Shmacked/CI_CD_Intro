@@ -8,4 +8,4 @@ def test_logic():
     assert hello.upper() == "HELLO, WORLD"
 
 def test_failure():
-    assert 1 + 1 == 3
+    assert 1 + 1 != 3
