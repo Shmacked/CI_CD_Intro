@@ -19,9 +19,7 @@ jobs:
         uses: astral-sh/setup-uv@v5
         with:
           enable-cache: true # Speeds up future runs!
-
-      - name: Set up Python
-        run: uv python install --python ${{ matrix.python-version }}
+          python-version: ${{ matrix.python-version }}
 
       - name: Install dependencies
         run: uv sync # This looks at your pyproject.toml
